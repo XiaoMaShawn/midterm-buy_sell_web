@@ -29,38 +29,27 @@
 
 <body>
   <header>
-    <h1>navgation bar</h1>
+    <%- include('partials/_header') %>
   </header>
-  <main style="margin: 1em;">
-    <h3>My URLs</h3>
-    <table class="table">
+  <div class="banner">
+    <div class="banner-text">
+      <h1>welcome to our website</h1>
+      <p>Hope you will enjoy shopping here</p>
+    </div>
+  </div>
+  <main class='item_container' style="margin: 1em;">
+
+    <h3>USERS</h3>
+    <table class="user_table">
       <thead>
         <tr>
-          <th scope="col">it </th>
-          <th scope="col">will</th>
-          <th scope="col">work</th>
-          <th scope="col">finally</th>
-
+          <th scope="col">User Name</th>
+          <th scope="col">User Email</th>
+          <th scope="col">User Phone</th>
         </tr>
       </thead>
-      <!-- <tbody>
-        <% for(let url in urls) { %>
-          <tr>
-            <td>
-              <%= url %>
-            </td>
-            <td>
-              <%= urls[url].longURL %>
-            </td>
-            <td>
-              <form method="POST" action="/urls/<%= url %>/delete"><button>Delete</button></form>
-            </td>
-            <td>
-              <form method='GET' action="/urls/<%= url %>"><button>Edit</button></form>
-            </td>
-          </tr>
-          <% } %>
-      </tbody> -->
+
+
     </table>
 
   </main>
