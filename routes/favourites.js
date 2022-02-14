@@ -12,8 +12,10 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM favourites;`)
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        const favourites = data.rows;
+    const templateVar = {};
+    templateVar.favourites = favourites;
+    res.render("favourites", templateVar)
       })
       .catch(err => {
         res

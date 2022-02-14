@@ -13,7 +13,9 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
-        res.json({ users });
+       const templateVar = {};
+       templateVar.users = users;
+       res.render('users', templateVar)
       })
       .catch(err => {
         res
@@ -21,7 +23,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+ 
+return router;
 
-
-  return router;
 };
