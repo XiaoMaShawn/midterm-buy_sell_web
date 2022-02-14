@@ -8,14 +8,18 @@
 const express = require('express');
 const router = express.Router();
 
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM favourites;`)
+    db.query(`SELECT users.name AS User, items.name AS Name, items.photo_url AS image FROM favourites
+    JOIN users ON favourites.user_id = users.id
+    JOIN items ON favourites.item_id = items.id`)
       .then(data => {
         const favourites = data.rows;
-    const templateVar = {};
-    templateVar.favourites = favourites;
-    res.render("favourites", templateVar)
+    const templateVars = {};
+    templateVars.favourites = favourites;
+    console.log(templateVars)
+    res.render("favourites", templateVars)
       })
       .catch(err => {
         res
