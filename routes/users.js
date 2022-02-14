@@ -13,6 +13,24 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
+        const templateVar = {};
+        // console.log(users);
+        // // res.json({ users });
+        templateVar.users = users;
+
+        console.log(templateVar);
+        // // res.render('users', templateVar);
+        res.render("users", templateVar);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.get("/api", (req, res) => {
+    db.query(`SELECT * FROM users;`)
+      .then((data) => {
+        const users = data.rows;
         res.json({ users });
       })
       .catch((err) => {
