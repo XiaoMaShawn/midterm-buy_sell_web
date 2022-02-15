@@ -9,14 +9,16 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
+
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    db.query(`
+    SELECT *
+    FROM users
+    `)
       .then((data) => {
         const users = data.rows;
         const templateVar = {};
-        // console.log(users)
         templateVar.users = users;
-
         console.log(templateVar);
         res.render("users", templateVar);
       })
@@ -24,6 +26,34 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
+
+  router.get("/:name", (req, res) => {
+    db.query(`
+    SELECT users.*, COUNT(items.*) as total_items
+    FROM users
+    LEFT JOIN items on users.id = items.owner_id
+    WHERE users.name = '${req.params.name}'
+    GROUP BY users.id;
+    `)
+      .then((data) => {
+        const users = data.rows;
+        const templateVar = {};
+        templateVar.users = users;
+        console.log(templateVar);
+        res.render("usersID", templateVar);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.post('/:name/delete', (req, res) => {
+    db.query(`
+    DELETE FROM users
+    WHERE name = '${req.params.name}';
+    `)
+    res.redirect('/users');
+  })
 
   router.get("/api", (req, res) => {
     db.query(`SELECT * FROM users;`)
