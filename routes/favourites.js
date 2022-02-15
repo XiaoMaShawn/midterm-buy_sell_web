@@ -11,7 +11,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT users.name AS User, items.name AS Name, items.photo_url AS image FROM favourites
+    db.query(`SELECT users.name AS User, items.name AS Name, items.description AS description, items.photo_url AS image FROM favourites
     JOIN users ON favourites.user_id = users.id
     JOIN items ON favourites.item_id = items.id`)
       .then(data => {
