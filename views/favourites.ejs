@@ -64,11 +64,11 @@
     <tbody>
       <% for(let favourite of favourites) { %>
         <tr>
-          <td><img src="<%= favourite.image %>" alt="" /></td>
+          <td class ="tableImage"><img src="<%= favourite.image %>" alt="" /></td>
           <td><%= favourite.name %></td>
           <td><%= favourite.description %></td>
           <td ><%= favourite.user %></td>
-          <td><form method="POST" action="/users/delete"><button type="button" class="btn btn-secondary" >Remove</button></form></td>
+          <td><form method="POST" action="/favourites/<%= favourite.id %>/delete"><button type="submit" class="btn btn-secondary" >Remove</button></form></td>
         </tr>
         <% } %>
     </tbody>

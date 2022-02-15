@@ -25,5 +25,17 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
+
+
+  router.post('/:id/delete', (req, res) => {
+    console.log('Favourites Remove button hit!')
+    db.query(`
+    DELETE FROM favourites
+    WHERE id = '${req.params.id}';
+    `)
+    res.redirect('/favourites');
+  })
+
+
   return router;
 };
