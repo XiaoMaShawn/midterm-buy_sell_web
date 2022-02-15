@@ -5,22 +5,20 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM favourites;`)
-      .then(data => {
+      .then((data) => {
         const favourites = data.rows;
-    const templateVar = {};
-    templateVar.favourites = favourites;
-    res.render("favourites", templateVar)
+        const templateVar = {};
+        templateVar.favourites = favourites;
+        res.render("favourites", templateVar);
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
   });
   return router;

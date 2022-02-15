@@ -37,13 +37,43 @@
       </div>
     </div>
     <main class="item_container" style="margin: 1em">
-      <h1>This is the ITEMS PAGE!!</h1>
-      <div>one</div>
-      <div>two</div>
-      <div>three</div>
-      <div>four</div>
-      <div>five</div>
-      <div>six</div>
+      <h3>ITEMS</h3>
+      <table class="user_table">
+        <thead>
+          <tr>
+            <th scope="col">username</th>
+            <th scope="col">item.name</th>
+            <th scope="col">item.description</th>
+            <th scope="col">item.photo_url</th>
+            <th scope="col">item.price</th>
+            <th scope="col">item.sold_date</th>
+            <th scope="col">item.active</th>
+            <th scope="col">item.owner_id</th>
+            <th scope="col">delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for(let item of items) { %>
+          <tr>
+            <td><%= item.username %></td>
+            <!-- <td><%= item.id %></td> -->
+            <td><%= item.name %></td>
+            <td><%= item.description %></td>
+            <td><img src="<%= item.photo_url %>" alt="" /></td>
+            <td><%= item.price%></td>
+            <td><%= item.sold_date%></td>
+            <td><%= item.active%></td>
+            <td><%= item.owner_id%></td>
+            <td>
+              <form method="POST" action="/users/delete">
+                <button>Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
     </main>
     <!-- Bootstrap JS -->
     <script
