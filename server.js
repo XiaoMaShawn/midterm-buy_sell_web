@@ -61,12 +61,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-// app.get("/items", (req, res) => {
-//   // const templateVars = {};
-//   console.log();
-//   res.render("items");
-// });
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
