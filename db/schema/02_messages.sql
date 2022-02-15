@@ -4,7 +4,6 @@ CREATE TABLE messages (
   content TEXT,
   title VARCHAR(255),
   from_id INTEGER REFERENCES users(id) on DELETE CASCADE,
-  to_id INTEGER REFERENCES users(id) on DELETE CASCADE,
   sent_at TIMESTAMP,
   item_id INTEGER REFERENCES items(id) on DELETE CASCADE
 );
