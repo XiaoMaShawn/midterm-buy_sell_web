@@ -11,23 +11,48 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.get("/", (req, res) => {
-    db.query(`
-    SELECT *
-    FROM users
-    `)
-      .then((data) => {
-        const users = data.rows;
-        const templateVar = {};
-        templateVar.users = users;
-        // console.log(templateVar);
-        res.render("users", templateVar);
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+    if (req.session.id === 1) {
+      db.query(`
+      SELECT *
+      FROM users
+      `)
+        .then((data) => {
+          const users = data.rows;
+          const templateVar = {};
+          templateVar.users = users;
+          templateVar.username = req.session.username;
+          templateVar.id = req.session.id
+          // console.log(templateVar);
+          res.render("users", templateVar);
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+        });
+    } else {
+      db.query(`
+      SELECT *
+      FROM users
+      WHERE name = '${req.session.username}'
+      `)
+        .then((data) => {
+          const users = data.rows;
+          const templateVar = {};
+          templateVar.users = users;
+          templateVar.username = req.session.username;
+          templateVar.id = req.session.id
+
+          // console.log(templateVar);
+          res.render("users", templateVar);
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+        });
+
+    }
   });
 
   router.get("/:name", (req, res) => {
+
     db.query(`
     SELECT users.*, COUNT(items.*) as total_items
     FROM users
@@ -39,12 +64,17 @@ module.exports = (db) => {
         const users = data.rows;
         const templateVar = {};
         templateVar.users = users;
+        templateVar.username = req.session.username;
+        templateVar.id = req.session.id
+
         // console.log(templateVar);
         res.render("usersID", templateVar);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+
+
   });
 
   router.post('/:id/delete', (req, res) => {
