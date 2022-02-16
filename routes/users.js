@@ -19,7 +19,7 @@ module.exports = (db) => {
         const users = data.rows;
         const templateVar = {};
         templateVar.users = users;
-        console.log(templateVar);
+        // console.log(templateVar);
         res.render("users", templateVar);
       })
       .catch((err) => {
@@ -39,7 +39,7 @@ module.exports = (db) => {
         const users = data.rows;
         const templateVar = {};
         templateVar.users = users;
-        console.log(templateVar);
+        // console.log(templateVar);
         res.render("usersID", templateVar);
       })
       .catch((err) => {
@@ -47,10 +47,11 @@ module.exports = (db) => {
       });
   });
 
-  router.post('/:name/delete', (req, res) => {
+  router.post('/:id/delete', (req, res) => {
+    console.log(req.params.id);
     db.query(`
     DELETE FROM users
-    WHERE name = '${req.params.name}';
+    WHERE id = '${req.params.id}';
     `)
     res.redirect('/users');
   })

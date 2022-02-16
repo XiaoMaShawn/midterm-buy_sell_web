@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
   <!-- link CSS file -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -16,15 +15,11 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-
-
   <!-- link JS file and jQuery -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
-
-
-  <title>Buy Sell Home Page</title>
+  <title>Messages Page</title>
 </head>
 
 <body>
@@ -34,54 +29,50 @@
   <div class="banner">
     <div class="banner-text">
       <h1>welcome to our website</h1>
-      <p>Here Is all our USERS</p>
+      <p>Hope you will enjoy shopping here</p>
     </div>
   </div>
-  <main class='item_container' style="margin: 1em;">
-
-    <h3>Website USERS</h3>
+  <main class="item_container" style="margin: 1em">
+    <h3>Messages</h3>
     <table class="user_table">
       <thead>
         <tr>
-          <th scope="col">User Name</th>
-          <th scope="col">User Email</th>
-          <th scope="col">User Phone</th>
-          <th scope="col">User Total Items</th>
+          <th scope="col">Owner</th>
+          <th scope="col">Item</th>
 
-
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Time</th>
+          <th scope="col">Chat</th>
         </tr>
       </thead>
 
       <tbody>
-        <% for(let user of users) { %>
+        <% for(let message of messages) { %>
           <tr>
             <td>
-              <%= user.name %>
-                </a>
+              <%= message.owner %>
             </td>
             <td>
-              <%= user.email %>
+              <%= message.item_name %>
             </td>
             <td>
-              <%= user.phone_number %>
+              <%= message.title %>
             </td>
-            <% if (user.total_items==='0' ) { %>
-              <td>
-                Sorry, you haven't list any products!
-              </td>
-              <% } else { %>
-                <td>
-                  <%= user.total_items %>
-                </td>
-                <% } %>
-                  <td>
-                    <form method="POST" action="/users/<%= user.id %>/delete"><button>Delete</button></form>
-                  </td>
+            <td>
+              <%= message.content %>
+            </td>
+            <td>
+              <%= message.sent_at %>
+            </td>
+            <td>
+              <button>
+                <a href="/messages/<%= message.message_id %>/chat">chat</a>
+              </button>
+            </td>
           </tr>
           <% } %>
       </tbody>
-
-
     </table>
 
   </main>
