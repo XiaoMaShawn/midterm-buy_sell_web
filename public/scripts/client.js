@@ -1,46 +1,80 @@
-// <!-- link JS file and jQuery -->
-//client.js and Chat.ejs are linked
-
 //do i need to link to CHAT.ejs
-//do i need to require jquery
 
-<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
-$(document).ready(function() {
+$(() => {
+  console.log("client.js OO")
   //form submission
   //SYNTAX REMINDER # is id, . is class
-$("#submit-form").submit(function(event) {
-  //avoid page reload
-  event.preventDefault()
+  const renderMessages = function(messages) {
+    //loops through message
+    for (const message of messages) {
+      //calls createMessageElement for each tweet
+      $(".messageContainer").prepend(createMessageElement(message));
+      //takes return value and prepends it to each message container div
+    }
+  };
 
-  //get the message
-  let getMessage = $('input').val()
 
-  //if the message IS NOT empty
-  if(getMessage !== '') {
-    //prep
-    //area to append is CLASS MESSAGE
-    let newMessage = "<p class ='message' >" + getMessage + "</p> ";
+  const createMessageElement = function(message) {
+    const clean = function(string) {
+      //creating function to nullify script in textarea
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(string));
+      return div.innerHTML;
+    };
+    const $message = `
+    <article class="message">
+          <header class="messageHeader">
+            <address>${message.user}</address>
+          </header>
+          <div class="textInMessage">
+            <h5>
+            ${clean(message.content)}
+            </h5>
+          </div>
+        </article>
+    `;
 
-    //add/append the message to the box
-    $('.PLACETOPUT').append(newMessage);
+    return $message;
+  };
 
-  //clearing the form
-    $('input').val("")
-  }
-  db.query(
-    //this needs to be an insert query are they compatible
-    `QUERY`
-  )
-    .then((data) => {
-      const favourites = data.rows;
-      const templateVars = {};
-      templateVars.favourites = favourites;
-      res.render("favourites", templateVars);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
+
+  $("#messageForm").submit(function(event) {
+    event.preventDefault();
+    //stopping the default call
+
+    const messageFormData = $(this).serialize();
+    const idFromURL = window.location.href;
+    const splitArray = idFromURL.split("/");
+    const id = splitArray[4];
+    // console.log(splitArray)
+    // console.log(idFromURL)
+    // console.log(id)
+    //serializing form input
+    $.post(`/messages/${id}/chat`, messageFormData).then((response) => {
+      // loadMessages();
+      window.location.reload();
+       //calling loadMessages
+      // $(".form-control").trigger("reset");
+      //resetting the form so input clears
     });
-})
+  });
+
+  const loadMessages = function() {
+    console.log("loadmessage");
+    $.ajax({
+      url: "/messages/2/chat",
+      success: function(response) {
+        console.log(response)
+        // renderMessages(response)
+      }
+    })
+    // $.get("/2/chat").then((response) => {
+    //   //sending to renderMessages
+    //   renderMessages(response);
+    // });
+  };
+  loadMessages();
+  //calling loadMessages
 
 });

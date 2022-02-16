@@ -50,12 +50,36 @@ module.exports = (db) => {
     JOIN users ON owner_id = users.id
     WHERE messages.id = ${req.params.id}
     `).then(data => {
-      const templateVar = {};
-      templateVar.messages = data.rows;
-      console.log(templateVar);
+      const templateVar = {
+        messages: data.rows
+      };
+// data.rows;
+      // console.log(templateVar);
       res.render('chat', templateVar)
+      // res.json({messages:templateVar.messages})
     })
   });
 
+
+  router.post('/:id/chat', (req, res) => {
+    console.log(req.body)
+    db.query(`INSERT INTO messages (content, title, from_id,  item_id) VALUES ($1, $2, $3, $4) RETURNING *
+    `, [req.body.content, "title1", 3,  1]).then(data => {
+      const templateVar = {};
+      templateVar.messages = data.rows;
+      // console.log(templateVar);
+      res.redirect('/messages')
+      // res.render('chat', templateVar)
+    })
+  });
+
+
+//router.get
   return router;
 };
+
+// SELECT messages.id AS message_id, messages.title AS title, messages.content AS content, messages.sent_at AS sent_at, items.name AS item_name, users.name AS owner
+//     FROM messages
+//     JOIN items ON items.id = messages.item_id
+//     JOIN users ON owner_id = users.id
+//     WHERE messages.id = ${req.params.id}

@@ -85,7 +85,7 @@ body {
   width: 80%;
 }
 
-.chatContainer {
+.container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,20 +99,5 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: green;
-}
-
-.outerChatbox x {
-  border: 1% solid #ccc;
-  border-radius: 3%;
-  margin-bottom: 10px;
-}
-
-.outerChatbox x .innerChatbox {
-  height: 200px;
-  overflow-y: auto;
-}
-
-input {
-  border-radius: 1%;
 }
 /*# sourceMappingURL=main.css.map */
