@@ -48,7 +48,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Note: Feel free to replace the example routes below with your own
 app.use("/favourites", favouritesRoutes(db));
 app.use("/users", usersRoutes(db));
-app.use("/users/", itemsRoutes(db));
+app.use("/users", itemsRoutes(db));
 app.use("/search", searchRoutes(db));
 app.use("/api/search", resultsRoutes(db));
 
