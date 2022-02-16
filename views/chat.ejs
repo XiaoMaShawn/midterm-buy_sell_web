@@ -17,7 +17,8 @@
 
   <!-- link JS file and jQuery -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
+
 
   <title>Messages Page</title>
 </head>
@@ -76,7 +77,21 @@
       <button type="submit">submit</button>
 
     </form>
+
+
   </main>
+  <div class = "chatContainer">
+    <h1> Chat container h1 </h1>
+    <p>this chatbox takes input from user (submit form)</p>
+    <div class="outerChatBox">
+      <div class="innerChatBox" >
+        //messages will be added here
+      </div>
+    </div>
+    <form >
+      <input class="chatInput" placeholder="Chat and hit enter">
+    </form>
+  </div>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

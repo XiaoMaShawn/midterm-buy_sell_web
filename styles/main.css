@@ -80,4 +80,39 @@ body {
   -o-object-fit: contain;
      object-fit: contain;
 }
+
+.submit-form textarea {
+  width: 80%;
+}
+
+.chatContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: green;
+}
+
+.outerChatbox x {
+  border: 1% solid #ccc;
+  border-radius: 3%;
+  margin-bottom: 10px;
+}
+
+.outerChatbox x .innerChatbox {
+  height: 200px;
+  overflow-y: auto;
+}
+
+input {
+  border-radius: 1%;
+}
 /*# sourceMappingURL=main.css.map */

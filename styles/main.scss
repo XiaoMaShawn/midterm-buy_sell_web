@@ -75,3 +75,28 @@ body {
   }
 }
 
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // align-content: center;
+  align-items: center;
+  // flex-wrap: wrap;
+  background-color: green;
+}
+
+.outerChatbox x {
+  border: 1% solid #ccc;
+  border-radius: 3%;
+  margin-bottom: 10px;
+
+  .innerChatbox {
+    height: 200px;
+    overflow-y: auto;
+
+
+  }
+}
+input {
+  border-radius: 1%;
+}
