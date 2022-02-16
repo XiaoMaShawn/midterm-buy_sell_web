@@ -25,7 +25,7 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <title>Buy Sell Home Page</title>
+    <title>Favourites Page</title>
   </head>
 
 
@@ -36,7 +36,7 @@
 
 
 
-  <title>Buy Sell Favourites Page</title>
+  <title>Favourites Page</title>
 </head>
 
 <body>
@@ -53,9 +53,9 @@
     <table class="table">
     <thead>
       <tr>
+        <th scope="col">Favourite</th>
         <th scope="col"></th>
         <th scope="col">Game</th>
-        <th scope="col">Description</th>
         <th scope="col">User Name</th>
         <th scope="col">Remove From Favourites</th>
       </tr>
@@ -64,10 +64,14 @@
     <tbody>
       <% for(let favourite of favourites) { %>
         <tr>
-          <td class ="tableImage"><img src="<%= favourite.image %>" alt="" /></td>
-          <td><%= favourite.name %></td>
-          <td><%= favourite.description %></td>
-          <td ><%= favourite.user %></td>
+          <td><%= favourite.id %></td>
+          <td class ="tableImage"><img src="<%= favourite.image %>" alt="photo_url" /></td>
+          <td>
+            <a href="/favourites/<%= favourite.id %>">
+              <%= favourite.name %>
+            </a>
+          </td>
+          <td ><%= favourite.description %></td>
           <td><form method="POST" action="/favourites/<%= favourite.id %>/delete"><button type="submit" class="btn btn-secondary" >Remove</button></form></td>
         </tr>
         <% } %>

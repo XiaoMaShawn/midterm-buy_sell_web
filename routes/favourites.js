@@ -8,34 +8,54 @@
 const express = require("express");
 const router = express.Router();
 
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT users.name AS User, items.name AS Name, items.description AS description, items.photo_url AS image FROM favourites
+    db.query(
+      `SELECT users.name AS User, items.name AS Name, items.photo_url AS image, favourites.id as id FROM favourites
     JOIN users ON favourites.user_id = users.id
-    JOIN items ON favourites.item_id = items.id`)
-      .then(data => {
+    JOIN items ON favourites.item_id = items.id;`
+    )
+      .then((data) => {
         const favourites = data.rows;
-    const templateVars = {};
-    templateVars.favourites = favourites;
-    console.log(templateVars)
-    res.render("favourites", templateVars)
+        const templateVars = {};
+        templateVars.favourites = favourites;
+        res.render("favourites", templateVars);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
 
+  router.get("/:id", (req, res) => {
+   console.log()
+    const userID = req.params.id
+    db.query(
+      `SELECT favourites.id AS ID, items.name AS Name, items.description AS description, items.photo_url AS image FROM favourites
+    JOIN users ON favourites.user_id = users.id
+    JOIN items ON favourites.item_id = items.id
+    WHERE favourites.id = ${userID}
+    GROUP BY favourites.id, items.name, items.description, items.photo_url;`
+    )
+      .then((data) => {
+        const favourites = data.rows;
+        const templateVars = {};
+        templateVars.favourites = favourites;
+        console.log("/id templateVars", templateVars);
+        res.render("favouritesID", templateVars);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
-  router.post('/:id/delete', (req, res) => {
-    console.log('Favourites Remove button hit!')
+  router.post("/:id/delete", (req, res) => {
+    console.log("Favourites Remove button hit!", req);
     db.query(`
     DELETE FROM favourites
     WHERE id = '${req.params.id}';
-    `)
-    res.redirect('/favourites');
-  })
-
+    `);
+    res.redirect("/favourites");
+  });
 
   return router;
 };
