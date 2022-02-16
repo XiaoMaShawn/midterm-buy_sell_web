@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -50,7 +50,7 @@ app.use("/favourites", favouritesRoutes(db));
 app.use("/users", usersRoutes(db));
 app.use("/users", itemsRoutes(db));
 app.use("/search", searchRoutes(db));
-app.use("/api/search", resultsRoutes(db));
+app.use("/search", resultsRoutes(db));
 
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above

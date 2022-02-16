@@ -19,7 +19,21 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/items.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/782079e8aa.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- link JS file and jQuery -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -49,6 +63,7 @@
             <th scope="col">item.sold_date</th>
             <th scope="col">item.active</th>
             <th scope="col">item.owner_id</th>
+            <!-- <th scope="col">favourite</th> -->
             <th scope="col">delete</th>
           </tr>
         </thead>
@@ -60,13 +75,18 @@
             <!-- <td><%= item.id %></td> -->
             <td><%= item.name %></td>
             <td><%= item.description %></td>
-            <td><img src="<%= item.photo_url %>" alt="" /></td>
+            <td>
+              <img src="<%= item.photo_url %>" alt="photo_url" />
+            </td>
             <td><%= item.price%></td>
             <td><%= item.sold_date%></td>
             <td><%= item.active%></td>
             <td><%= item.owner_id%></td>
             <td>
-              <form method="POST" action="/users/delete">
+              <form method="POST" action="users/items/<%= item.id %>/delete">
+                <i id="heart" class="fas fa-heart"></i>
+              </form>
+              <form method="POST" action="users/items/<%= item.id %>/delete">
                 <button>Delete</button>
               </form>
             </td>

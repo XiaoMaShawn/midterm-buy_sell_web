@@ -70,12 +70,12 @@
         <tbody>
           <% for(let item of items) { %>
           <tr>
-            <td><%= item.id %></td>
+            <td><%= item.username %></td>
             <!-- <td><%= item.id %></td> -->
             <td><%= item.name %></td>
             <td><%= item.description %></td>
             <td>
-              <div><img src="<%= item.photo_url %>" alt="photo_url" /></div>
+              <img src="<%= item.photo_url %>" alt="photo_url" />
             </td>
             <td><%= item.price%></td>
             <td><%= item.sold_date%></td>

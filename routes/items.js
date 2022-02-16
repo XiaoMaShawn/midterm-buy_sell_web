@@ -9,6 +9,33 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
+  router.get("/items", (req, res) => {
+    ///RETURNs UNDEFINED
+    // BODY IS ONLY FOR POST console.log(`THIS BE THE`, req.body);
+    console.log(`THIS BE THE`, req.params);
+
+    db.query(
+      `SELECT items.*, users.name AS username
+      FROM items
+    JOIN users ON users.id = items.owner_id ;`
+    )
+      .then((data) => {
+        const items = data.rows;
+        console.log(
+          "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++",
+          data
+        );
+        const templateVars = {};
+        templateVars.items = items;
+        // console.log(templateVars.items);
+        res.render("items", templateVars);
+        // res.json({ items });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.get("/:user_id/items", (req, res) => {
     ///RETURNs UNDEFINED
     // BODY IS ONLY FOR POST console.log(`THIS BE THE`, req.body);
@@ -37,7 +64,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/:item_id/delete", (req, res) => {
+  router.post("/items/:item_id/delete", (req, res) => {
     console.log(`THIS IS CONSOLE`, req);
     db.query(`
     DELETE FROM items

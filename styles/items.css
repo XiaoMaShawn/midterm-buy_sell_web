@@ -1,1 +1,11 @@
-/* No CSS *//*# sourceMappingURL=items.css.map */
+#heart:hover {
+  color: red;
+}
+td:hover {
+  border: solid;
+  border-width: 1px;
+  border-color: #4056a0;
+  background-color: #f4ecf2;
+  opacity: 0.5;
+}
+/*# sourceMappingURL=items.css.map */
