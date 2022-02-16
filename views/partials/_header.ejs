@@ -9,11 +9,28 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/">Home</a>
         <a class="nav-item nav-link" href="/users">Users</a>
-        <a class="nav-item nav-link" href="./items">Items</a>
-        <a class="nav-item nav-link" href="./favourites">Search Items</a>
-        <a class="nav-item nav-link" href="./messages">Messages</a>
-        <a class="nav-item nav-link" href="./favourites">Favourites</a>
+        <a class="nav-item nav-link" href="/items">Items</a>
+        <a class="nav-item nav-link" href="/favourites">Search Items</a>
+        <a class="nav-item nav-link" href="/messages">Messages</a>
+        <a class="nav-item nav-link" href="/favourites">Favourites</a>
       </div>
     </div>
+
+    <% if (username) { %>
+      <form action="/logout" method="POST">
+        <label>Welcome!
+          <%= username %>
+        </label>
+        <button>Log out</button>
+      </form>
+      <% } else {%>
+        <form action="/login" method="POST">
+          <label>Username</label>
+          <input type="text" name="username">
+          <label>Password</label>
+          <input type="password" name='password'>
+          <button>Submit</button>
+        </form>
+        <% } %>
   </nav>
 </header>

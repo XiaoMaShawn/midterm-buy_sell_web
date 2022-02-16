@@ -10,3 +10,4 @@ INSERT INTO users (name, email, password, phone_number) VALUES ('Coraline', 'cor
 INSERT INTO users (name, email, password, phone_number) VALUES ('Mike', 'mike@gmail.com', 'password', '647-300-9000');
 INSERT INTO users (name, email, password, phone_number) VALUES ('Joseph', 'joseph@gmail.com', 'password', '711-300-5148');
 INSERT INTO users (name, email, password, phone_number) VALUES ('Landon', 'landon@gmail.com', 'password', '416-879-3001');
+INSERT INTO users (name, email, password, phone_number) VALUES ('Admin', 'admin@gmail.com', 'password', '413-829-3031');
