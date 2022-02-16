@@ -17,7 +17,7 @@
 
   <!-- link JS file and jQuery -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
 
   <title>Messages Page</title>
 </head>
@@ -69,7 +69,7 @@
           <% } %>
       </tbody>
     </table>
-    <form id="submit-form" method="POST" action='/messages'>
+    <form id="submit-form">
       <textarea name="text" id="message"></textarea>
 
       <button type="submit">submit</button>

@@ -70,16 +70,31 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   const templateVar = {};
   templateVar.username = req.session.username;
-  console.log(templateVar);
+  // console.log(templateVar);
   res.render("index", templateVar);
 });
 
 app.post('/login', (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  req.session['username'] = username;
+  if (req.body.username === 'Admin') {
+    req.session.id = 1;
+    req.session.username = req.body.username;
+  } else {
+    // db.query(`
+    //   SELECT id FROM users
+    //   WHERE name = '${req.body.username}'
+    //  `)
+    //   .then(data => {
+    //     // console.log(data.rows);
+    //     const id = data.rows[0].id
+    //     return id
+    //   }
+    //   )
+    req.session.id = 2
+    req.session.username = req.body.username;
+  }
   console.log(req.session);
-  res.redirect('/');
+
+  res.redirect(`/`);
 });
 
 app.post('/logout', (req, res) => {

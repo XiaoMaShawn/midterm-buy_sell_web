@@ -10,6 +10,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+
     db.query(`
     SELECT *
     FROM messages
@@ -18,6 +19,9 @@ module.exports = (db) => {
       .then(data => {
         const templateVar = {};
         templateVar.messages = data.rows;
+        templateVar.username = req.session.username;
+        templateVar.id = req.session.id
+
         res.render("messages", templateVar);
       })
       .catch(err => {
@@ -25,6 +29,8 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+
+
   });
 
   router.get('/:id', (req, res) => {
@@ -37,7 +43,10 @@ module.exports = (db) => {
     `).then(data => {
       const templateVar = {};
       templateVar.messages = data.rows;
-      console.log(templateVar);
+      templateVar.username = req.session.username;
+      templateVar.id = req.session.id
+
+      // console.log(templateVar);
       res.render('messagesID', templateVar)
     })
   });
@@ -52,7 +61,10 @@ module.exports = (db) => {
     `).then(data => {
       const templateVar = {};
       templateVar.messages = data.rows;
-      console.log(templateVar);
+      templateVar.username = req.session.username;
+      templateVar.id = req.session.id
+
+      // console.log(templateVar);
       res.render('chat', templateVar)
     })
   });
