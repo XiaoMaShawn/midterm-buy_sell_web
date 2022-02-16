@@ -40,6 +40,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const favouritesRoutes = require("./routes/favourites");
 const itemsRoutes = require("./routes/items");
+const messagesRoutes = require("./routes/messages");
 
 const widgetsRoutes = require("./routes/widgets");
 
@@ -48,6 +49,8 @@ const widgetsRoutes = require("./routes/widgets");
 app.use("/favourites", favouritesRoutes(db));
 app.use("/users", usersRoutes(db));
 app.use("/items", itemsRoutes(db));
+app.use("/messages", messagesRoutes(db));
+
 
 
 app.use("/api/widgets", widgetsRoutes(db));
