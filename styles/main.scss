@@ -56,3 +56,30 @@ body {
     text-align: center;
  }
 }
+
+.user_table {
+  width:100%;
+  th,td {
+    padding: 5px;
+  }
+}
+
+.tableImage img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.submit-form {
+  textarea{
+    width: 80%;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: green;
+}

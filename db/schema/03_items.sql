@@ -4,7 +4,7 @@ CREATE TABLE items (
   name VARCHAR(255),
   description TEXT,
   photo_url VARCHAR(255),
-  price INTEGER,
+  price INTEGER NOT NULL,
   list_date TIMESTAMP,
   sold_date TIMESTAMP,
   active BOOLEAN DEFAULT TRUE,

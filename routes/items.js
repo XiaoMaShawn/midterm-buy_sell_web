@@ -28,6 +28,9 @@ module.exports = (db) => {
         const templateVars = {};
         templateVars.items = items;
         // console.log(templateVars.items);
+        templateVars.id = req.session.id;
+        templateVars.username = req.session.username;
+
         res.render("items", templateVars);
         // res.json({ items });
       })
@@ -56,6 +59,9 @@ module.exports = (db) => {
         const templateVars = {};
         templateVars.items = items;
         // console.log(templateVars.items);
+        templateVars.id = req.session.id;
+
+        templateVars.username = req.session.username;
         res.render("items", templateVars);
         // res.json({ items });
       })
@@ -70,7 +76,7 @@ module.exports = (db) => {
     DELETE FROM items
     WHERE id = '${req.params.item_id}';
     `);
-    res.redirect("/items");
+    res.redirect("/users/items");
   });
 
   router.get("/api", (req, res) => {

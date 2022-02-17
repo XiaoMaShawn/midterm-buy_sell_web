@@ -92,6 +92,9 @@ module.exports = (db) => {
         );
         const templateVars = {};
         templateVars.items = items;
+        templateVars.id = req.session.id;
+
+        templateVars.username = req.session.username;
         // console.log(templateVars.items);
         res.render("items", templateVars);
         // res.json({ items });

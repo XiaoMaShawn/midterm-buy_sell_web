@@ -10,15 +10,20 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/new", (req, res) => {
-    res.render("postItems");
+    const templateVars = {};
+    templateVars.id = req.session.id;
+
+    templateVars.username = req.session.username;
+    res.render("postItems", templateVars);
   });
 
   router.post("/", (req, res) => {
+    const price = req.body.price ? req.body.price : 0;
     const queryParams = [
       req.body.name,
       req.body.description,
       req.body.photoUrl,
-      req.body.price,
+      price,
       req.body.ownerId,
     ];
     // 2
@@ -26,71 +31,6 @@ module.exports = (db) => {
     INSERT INTO items (name, description, photo_url, price, owner_id) VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
   `;
-    // console.log(queryParams, `queryParams`, queryParams.length);
-
-    // // 3
-    // if (req.body.owner) {
-    //   queryParams.push(`%${req.body.owner}%`);
-    //   queryString += `
-    //   WHERE users.name LIKE $${queryParams.length} `;
-    //   // console.log(test);
-    // }
-    // // console.log(queryParams, `queryParams`, queryParams.length);
-    // if (req.body.description) {
-    //   queryParams.push(`%${req.body.description}%`);
-    //   if (queryParams.length > 1) {
-    //     queryString += `
-    //     AND description LIKE $${queryParams.length} `;
-    //   } else {
-    //     queryString += `
-    //     WHERE description LIKE $${queryParams.length} `;
-    //   }
-    // }
-
-    // if (req.body.minPrice) {
-    //   queryParams.push(`${req.body.minPrice}`);
-    //   if (queryParams.length > 1) {
-    //     queryString += `AND price > $${queryParams.length} `;
-    //   } else {
-    //     queryString += `WHERE price > $${queryParams.length} `;
-    //   }
-    // }
-
-    // if (req.body.maxPrice) {
-    //   queryParams.push(`${req.body.maxPrice}`);
-    //   if (queryParams.length > 1) {
-    //     queryString += `AND price < $${queryParams.length} `;
-    //   } else {
-    //     queryString += `WHERE price < $${queryParams.length} `;
-    //   }
-    // }
-    // if (options.maximum_price_per_night) {
-    //   queryParams.push(`${options.maximum_price_per_night}`);
-    //   if (queryParams.length > 0) {
-    //     queryString += `AND cost_per_night <  $${queryParams.length} `;
-    //   } else {
-    //     queryString += `WHERE cost_per_night <  $${queryParams.length} `;
-    //   }
-    // }
-
-    //     // 4
-    //     queryString += `
-    //  ORDER BY users.name;
-    //  `;
-
-    // 5
-    // console.log(queryString, queryParams);
-
-    // 6
-    // return pool
-    //   .query(queryString, queryParams)
-    //   .then((res) => res.rows)
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
-
-    ///////////////////////////////////
-    // console.log("req.body", req.body);
 
     db.query(queryString, queryParams)
       .then((data) => {
@@ -102,6 +42,9 @@ module.exports = (db) => {
         const templateVars = {};
         templateVars.items = items;
         // console.log(templateVars.items);
+        templateVars.id = req.session.id;
+
+        templateVars.username = req.session.username;
         res.render("postItemsResults", templateVars);
         // res.json({ items });
       })

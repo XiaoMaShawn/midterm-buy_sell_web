@@ -24,7 +24,7 @@
 
 
 
-  <title>Buy Sell Home Page</title>
+  <title>Favourites ID Page</title>
 </head>
 
 <body>
@@ -33,41 +33,42 @@
   </header>
   <div class="banner">
     <div class="banner-text">
-      <h1>welcome to our website</h1>
-      <p>Here Is all our USERS</p>
+      <h1>Favourites</h1>
+      <p>Check out all your favourites!</p>
     </div>
   </div>
   <main class='item_container' style="margin: 1em;">
 
-    <h3>Website USERS</h3>
-    <table class="user_table">
+    <h3>Favourites</h3>
+    <table class="favourites_table">
       <thead>
         <tr>
-          <th scope="col">User Name</th>
-          <th scope="col">User Email</th>
-          <th scope="col">User Phone</th>
+          <th scope="col"></th>
+          <th scope="col">Game</th>
+          <th scope="col">Description</th>
+          <th scope="col">Remove from Favourites</th>
 
 
         </tr>
       </thead>
 
       <tbody>
-        <% for(let user of users) { %>
+        <% for(let favourite of favourites) { %>
           <tr>
-            <td>
-              <a href="/users/<%= user.name %>">
-                <%= user.name %>
-              </a>
-            </td>
-            <td>
-              <%= user.email %>
-            </td>
-            <td>
-              <%= user.phone_number%>
-            </td>
-            <td>
-              <form method="POST" action="/users/<%= user.id %>/delete"><button>Delete</button></form>
-            </td>
+            <td class ="tableImage"><img src="<%= favourite.image %>" alt="photo_url" /></td>
+            <td><%= favourite.name %></td>
+            <td ><%= favourite.description %></td>
+            <% if (favourite.total_items==='0' ) { %>
+              <td>
+                Sorry, you haven't favourited any products!
+              </td>
+              <% } else { %>
+                <td>
+                </td>
+                <% } %>
+                  <td>
+                    <form method="POST" action="/favourites/<%= favourite.id %>/delete"><button>Delete</button></form>
+                  </td>
           </tr>
           <% } %>
       </tbody>

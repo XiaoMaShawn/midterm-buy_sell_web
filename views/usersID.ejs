@@ -46,6 +46,7 @@
           <th scope="col">User Name</th>
           <th scope="col">User Email</th>
           <th scope="col">User Phone</th>
+          <th scope="col">User Total Items</th>
 
 
         </tr>
@@ -55,19 +56,27 @@
         <% for(let user of users) { %>
           <tr>
             <td>
-              <a href="/users/<%= user.name %>">
-                <%= user.name %>
-              </a>
+              <%= user.name %>
+                </a>
             </td>
             <td>
               <%= user.email %>
             </td>
             <td>
-              <%= user.phone_number%>
+              <%= user.phone_number %>
             </td>
-            <td>
-              <form method="POST" action="/users/<%= user.id %>/delete"><button>Delete</button></form>
-            </td>
+            <% if (user.total_items==='0' ) { %>
+              <td>
+                Sorry, you haven't list any products!
+              </td>
+              <% } else { %>
+                <td>
+                  <%= user.total_items %>
+                </td>
+                <% } %>
+                  <td>
+                    <form method="POST" action="/users/<%= user.id %>/delete"><button>Delete</button></form>
+                  </td>
           </tr>
           <% } %>
       </tbody>

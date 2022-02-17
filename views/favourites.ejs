@@ -25,40 +25,69 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <title>Buy Sell Home Page</title>
+    <title>Favourites Page</title>
   </head>
 
-  <body>
-    <header><%- include('partials/_header') %></header>
-    <div class="banner">
-      <div class="banner-text">
-        <h1>Favourites</h1>
-        <p>See all your favourites!</p>
-      </div>
+
+
+  <!-- link JS file and jQuery -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+
+
+  <title>Favourites Page</title>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/_header') %>
+    </header>
+  <div class="banner">
+    <div class="banner-text">
+      <h1>Favourites</h1>
+      <p>See all your favourites!</p>
     </div>
-    <main class="item_container" style="margin: 1em">
-      <div>one</div>
-      <div>two</div>
-      <div>three</div>
-      <div>four</div>
-      <div>five</div>
-      <div>six</div>
-    </main>
-    <!-- Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  </div>
+  <main class='item_container' style="margin: 1em;">
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Favourite</th>
+        <th scope="col"></th>
+        <th scope="col">Game</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Remove From Favourites</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% for(let favourite of favourites) { %>
+        <tr>
+          <td><%= favourite.id %></td>
+          <td class ="tableImage"><img src="<%= favourite.image %>" alt="photo_url" /></td>
+          <td>
+            <a href="/favourites/<%= favourite.id %>">
+              <%= favourite.name %>
+            </a>
+          </td>
+          <td ><%= favourite.description %></td>
+          <td><form method="POST" action="/favourites/<%= favourite.id %>/delete"><button type="submit" class="btn btn-secondary" >Remove</button></form></td>
+        </tr>
+        <% } %>
+    </tbody>
+  </table>
+  </main>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

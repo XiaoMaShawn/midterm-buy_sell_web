@@ -75,7 +75,7 @@
             <!-- <td><%= item.id %></td> -->
             <td><%= item.name %></td>
             <td><%= item.description %></td>
-            <td>
+            <td class="tableImage">
               <img src="<%= item.photo_url %>" alt="photo_url" />
             </td>
             <td><%= item.price%></td>
@@ -83,10 +83,10 @@
             <td><%= item.active%></td>
             <td><%= item.owner_id%></td>
             <td>
-              <form method="POST" action="users/items/<%= item.id %>/delete">
+              <form method="POST" action="users/<%= item.id %>/favourites/">
                 <i id="heart" class="fas fa-heart"></i>
               </form>
-              <form method="POST" action="users/items/<%= item.id %>/delete">
+              <form method="POST" action="/users/items/<%= item.id %>/delete">
                 <button>Delete</button>
               </form>
             </td>
