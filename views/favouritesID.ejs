@@ -67,7 +67,7 @@
                 </td>
                 <% } %>
                   <td>
-                    <form method="POST" action="/favourites/<%= favourite.id %>/delete"><button>Delete</button></form>
+                    <form method="POST" action="/<%=favourites.user_id%>/favourites/delete"><button>Delete</button></form>
                   </td>
           </tr>
           <% } %>
