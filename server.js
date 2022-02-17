@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8180;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -51,7 +51,6 @@ const favouritesRoutes = require("./routes/favourites");
 const itemsRoutes = require("./routes/items");
 const searchRoutes = require("./routes/search");
 
-// const postItemsRoutes = require("./routes/postItems");
 const messagesRoutes = require("./routes/messages");
 
 const widgetsRoutes = require("./routes/widgets");
@@ -61,10 +60,7 @@ const widgetsRoutes = require("./routes/widgets");
 app.use("/users", favouritesRoutes(db));
 app.use("/users", itemsRoutes(db));
 app.use("/search", searchRoutes(db));
-// app.use("/users/items", postItemsRoutes(db));
 app.use("/", usersRoutes(db));
-// app.use("/search", searchRoutes(db));
-// app.use("/users/items", postItemsRoutes(db));
 app.use("/messages", messagesRoutes(db));
 
 // app.use("/api/widgets", widgetsRoutes(db));
