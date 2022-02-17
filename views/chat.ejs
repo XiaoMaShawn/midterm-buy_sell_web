@@ -17,17 +17,9 @@
 
 
   <!-- link JS file and jQuery -->
-<<<<<<< HEAD
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <!-- <script  type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
-  <script type="text/javascript" src="/scripts/client.js"></script>
-
-=======
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/client.js"></script>
->>>>>>> 35d5594889180d7e9ba2dec24f6a7fd62caeba46
 
   <title>Messages Page</title>
 </head>
@@ -44,9 +36,10 @@
         <tr>
           <th scope="col">Owner</th>
           <th scope="col">Item</th>
+          <th scope="col">From</th>
           <th scope="col">Title</th>
           <th scope="col">Content</th>
-          <th scope="col">Time</th>
+          <!-- <th scope="col">Time</th> -->
 
         </tr>
       </thead>
@@ -54,11 +47,14 @@
       <tbody>
         <% for(let message of messages) { %>
           <tr>
-            <td>
+            <td id="owner">
               <%= message.owner %>
             </td>
             <td>
               <%= message.item_name %>
+            </td>
+            <td>
+              <%= message.from_id %>
             </td>
             <td>
               <%= message.title %>
@@ -66,9 +62,9 @@
             <td>
               <%= message.content %>
             </td>
-            <td>
+            <!-- <td>
               <%= message.sent_at %>
-            </td>
+            </td> -->
 
           </tr>
           <% } %>
@@ -85,8 +81,50 @@
       </div>
     </div>
     <form id = "messageForm">
-      <input name="content" class="form-control" placeholder="type & hit enter"/>
-      <button>SUBMIT</button>
+      <div class="chatFormGroup">
+        <input
+        id="owner"
+         name="owner"
+         class="form-control"
+         type="owner"
+         placeholder="Owner"/>
+        </div>
+        <div class="chatFormGroup">
+          <input
+          id="from"
+           name="from"
+           class="form-control"
+           type="from"
+           placeholder="From"/>
+          </div>
+          <div class="chatFormGroup">
+            <input
+            id="item_id"
+             name="item_id"
+             class="form-control"
+             type="item_id"
+             placeholder="item_id"/>
+            </div>
+
+
+      <div class="chatFormGroup">
+        <input
+        id="title"
+         name="title"
+         class="form-control"
+         type="title"
+         placeholder="Enter Title"/>
+      </div>
+
+      <div class="chatFormGroup">
+      <input
+      id="content"
+       name="content"
+       class="form-control"
+       type="content"
+       placeholder="type your message!"/>
+      </div>
+      <button type="submit" class="btn btn-primary">SUBMIT</button>
     </form>
     <div class="messageContainer"></div>
   </div>

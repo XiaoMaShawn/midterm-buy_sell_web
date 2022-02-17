@@ -38,11 +38,12 @@
     <table class="user_table">
       <thead>
         <tr>
-          <th scope="col">Item123</th>
+          <th scope="col">Item</th>
+          <th scope="col">From</th>
           <th scope="col">Title</th>
           <th scope="col">Content</th>
           <!-- <th scope="col">Reseriver</th> -->
-          <th scope="col">Time</th>
+          <!-- <th scope="col">Time</th> -->
         </tr>
       </thead>
 
@@ -50,19 +51,22 @@
         <% for(let message of messages) { %>
           <tr>
             <td>
-              <%= message.name %>
+              <a href="/messages/<%= message.id %>">
+                <%= message.name %>
+              </a>
             </td>
             <td>
-              <a href="/messages/<%= message.id %>">
+              <%= message.from_id %>
+            </td>
+            <td>
                 <%= message.title %>
-              </a>
             </td>
             <td>
               <%= message.content %>
             </td>
-            <td>
+            <!-- <td>
               <%= message.send_at %>
-            </td>
+            </td> -->
           </tr>
           <% } %>
       </tbody>
