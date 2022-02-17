@@ -60,13 +60,13 @@ module.exports = (db) => {
     WHERE messages.id = ${req.params.id}
     `
     ).then((data) => {
-      const templateVars = {
-        messages: data.rows,
-      };
-      // data.rows;
-      // console.log(templateVars);
+      const templateVars = {};
+      templateVars.messages = data.rows,
+        templateVars.username = req.session.username;
+      templateVars.id = req.session.id;
+
       res.render("chat", templateVars);
-      // res.json({messages:templateVar.messages})
+
     });
   });
 

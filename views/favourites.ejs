@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- link CSS file -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
-    <!-- link JS file and jQuery -->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- link CSS file -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <title>Favourites Page</title>
-  </head>
-
-
+  <!--Font Awesome-->
+  <script src="https://kit.fontawesome.com/782079e8aa.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- link JS file and jQuery -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
-
-
   <title>Favourites Page</title>
+</head>
+
+
+
+<!-- link JS file and jQuery -->
+<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="/scripts/app.js"></script>
+
+
+
+<title>Favourites Page</title>
 </head>
 
 <body>
   <header>
     <%- include('partials/_header') %>
-    </header>
+  </header>
   <div class="banner">
     <div class="banner-text">
       <h1>Favourites</h1>
@@ -51,32 +51,33 @@
   </div>
   <main class='item_container' style="margin: 1em;">
     <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Favourite</th>
-        <th scope="col"></th>
-        <th scope="col">Game</th>
-        <th scope="col">User Name</th>
-        <th scope="col">Remove From Favourites</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% for(let favourite of favourites) { %>
+      <thead>
         <tr>
-          <td><%= favourite.id %></td>
-          <td class ="tableImage"><img src="<%= favourite.image %>" alt="photo_url" /></td>
-          <td>
-            <a href="users/favourites/<%= favourite.id %>">
-              <%= favourite.name %>
-            </a>
-          </td>
-          <td ><%= favourite.description %></td>
-          <td><form method="POST" action="users/favourites/<%= favourite.id %>/delete"><button type="submit" class="btn btn-secondary" >Remove</button></form></td>
+          <th scope="col">User</th>
+          <th scope="col">Favourite</th>
+          <th scope="col">Game</th>
+
         </tr>
-        <% } %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% for(let favourite of favourites) { %>
+          <tr>
+            <td>
+              <%= favourite.user %>
+            </td>
+            <td class="tableImage">
+              <img src="<%= favourite.image %>" alt="photo_url" />
+            </td>
+            <td>
+              <%= favourite.name %>
+            </td>
+
+
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
   </main>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

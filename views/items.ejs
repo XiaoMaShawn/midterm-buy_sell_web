@@ -1,90 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- link CSS file -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/items.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
-    <!--Font Awesome-->
-    <script
-      src="https://kit.fontawesome.com/782079e8aa.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  <!-- link CSS file -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/items.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- link JS file and jQuery -->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <!--Font Awesome-->
+  <script src="https://kit.fontawesome.com/782079e8aa.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Buy Sell Home Page</title>
-  </head>
+  <!-- link JS file and jQuery -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <body>
-    <header><%- include('partials/_header') %></header>
-    <div class="banner">
-      <div class="banner-text">
-        <h1>welcome to our website</h1>
-        <p>Hope you will enjoy shopping here</p>
-      </div>
+  <title>Buy Sell Home Page</title>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+  <div class="banner">
+    <div class="banner-text">
+      <h1>welcome to our website</h1>
+      <p>Hope you will enjoy shopping here</p>
     </div>
-    <main class="item_container" style="margin: 1em">
-      <h3>ITEMS</h3>
-      <table class="user_table">
-        <thead>
-          <tr>
-            <th scope="col">username</th>
-            <th scope="col">item.name</th>
-            <th scope="col">item.description</th>
-            <th scope="col">item.photo_url</th>
-            <th scope="col">item.price</th>
-            <th scope="col">item.sold_date</th>
-            <th scope="col">item.active</th>
-            <th scope="col">item.owner_id</th>
-            <!-- <th scope="col">favourite</th> -->
-            <th scope="col">delete</th>
-          </tr>
-        </thead>
+  </div>
+  <main class="item_container" style="margin: 1em">
+    <h3>ITEMS</h3>
+    <table class="user_table">
+      <thead>
+        <tr>
+          <th scope="col">username</th>
+          <th scope="col">item.name</th>
+          <th scope="col">item.description</th>
+          <th scope="col">item.photo_url</th>
+          <th scope="col">item.price</th>
+          <th scope="col">item.sold_date</th>
+          <th scope="col">item.active</th>
+          <th scope="col">item.owner_id</th>
+          <!-- <th scope="col">favourite</th> -->
+          <th scope="col">delete</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <% for(let item of items) { %>
+      <tbody>
+        <% for(let item of items) { %>
           <tr>
-            <td><%= item.username %></td>
+            <td>
+              <%= item.username %>
+            </td>
             <!-- <td><%= item.id %></td> -->
-            <td><%= item.name %></td>
-            <td><%= item.description %></td>
+            <td>
+              <%= item.name %>
+            </td>
+            <td>
+              <%= item.description %>
+            </td>
             <td class="tableImage">
               <img src="<%= item.photo_url %>" alt="photo_url" />
             </td>
-            <td><%= item.price%></td>
-            <td><%= item.sold_date%></td>
-            <td><%= item.active%></td>
-            <td><%= item.owner_id%></td>
             <td>
-              <form method="POST" action="/users/<%= username %>/favourites/">
-                <i id="heart" class="fas fa-heart"></i>
+              <%= item.price%>
+            </td>
+            <td>
+              <%= item.sold_date%>
+            </td>
+            <td>
+              <%= item.active%>
+            </td>
+            <td>
+              <%= item.owner_id%>
+            </td>
+            <td>
+              <form method="POST" type="submit" action="/users/<%= id %>/favourites/">
+                <input type="hidden" id="item_id" name="item_id" value="<%= item.id %>" />
+                <button type="submit" id="completed-task" class="fabutton">
+                  <i id="heart" type="submit" class="fas fa-heart"></i>
+                </button>
               </form>
               <form method="POST" action="/users/items/<%= item.id %>/delete">
                 <button>Delete</button>
@@ -92,24 +98,19 @@
             </td>
           </tr>
           <% } %>
-        </tbody>
-      </table>
-    </main>
-    <!-- Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      </tbody>
+    </table>
+  </main>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -50,7 +50,6 @@ const usersRoutes = require("./routes/users");
 const favouritesRoutes = require("./routes/favourites");
 const itemsRoutes = require("./routes/items");
 const searchRoutes = require("./routes/search");
-
 const messagesRoutes = require("./routes/messages");
 
 const widgetsRoutes = require("./routes/widgets");
@@ -82,16 +81,6 @@ app.post("/login", (req, res) => {
     req.session.id = 1;
     req.session.username = req.body.username;
   } else {
-    // db.query(`
-    //   SELECT id FROM users
-    //   WHERE name = '${req.body.username}'
-    //  `)
-    //   .then(data => {
-    //     // console.log(data.rows);
-    //     const id = data.rows[0].id
-    //     return id
-    //   }
-    //   )
     req.session.id = 2;
     req.session.username = req.body.username;
   }
