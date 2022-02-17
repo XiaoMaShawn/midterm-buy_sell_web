@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8088;
+const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -59,7 +59,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/favourites", favouritesRoutes(db));
-app.use("/users", usersRoutes(db));
+app.use("/", usersRoutes(db));
 app.use("/search", searchRoutes(db));
 app.use("/users/items", postItemsRoutes(db));
 app.use("/users", itemsRoutes(db));

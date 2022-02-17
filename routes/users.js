@@ -9,7 +9,7 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.get("/users", (req, res) => {
     if (req.session.id === 1) {
       db.query(
         `
@@ -53,7 +53,7 @@ module.exports = (db) => {
     }
   });
 
-  router.get("/:name", (req, res) => {
+  router.get("/users/:name", (req, res) => {
     db.query(
       `
     SELECT users.*, COUNT(items.*) as total_items
@@ -78,7 +78,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/:id/delete", (req, res) => {
+  router.post("/users/:id/delete", (req, res) => {
     console.log(req.params.id);
     db.query(`
     DELETE FROM users
@@ -87,7 +87,7 @@ module.exports = (db) => {
     res.redirect("/users");
   });
 
-  router.get("/api", (req, res) => {
+  router.get("/users/api", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
