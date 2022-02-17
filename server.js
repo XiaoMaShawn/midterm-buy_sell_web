@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8088;
+const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -49,7 +49,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const favouritesRoutes = require("./routes/favourites");
 const itemsRoutes = require("./routes/items");
-// const searchRoutes = require("./routes/search");
+const searchRoutes = require("./routes/search");
 
 // const postItemsRoutes = require("./routes/postItems");
 const messagesRoutes = require("./routes/messages");
@@ -58,8 +58,10 @@ const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/users/favourites", favouritesRoutes(db));
+app.use("/users", favouritesRoutes(db));
 app.use("/users", itemsRoutes(db));
+app.use("/search", searchRoutes(db));
+// app.use("/users/items", postItemsRoutes(db));
 app.use("/", usersRoutes(db));
 // app.use("/search", searchRoutes(db));
 // app.use("/users/items", postItemsRoutes(db));

@@ -67,12 +67,12 @@
           <td><%= favourite.id %></td>
           <td class ="tableImage"><img src="<%= favourite.image %>" alt="photo_url" /></td>
           <td>
-            <a href="/favourites/<%= favourite.id %>">
+            <a href="users/favourites/<%= favourite.id %>">
               <%= favourite.name %>
             </a>
           </td>
           <td ><%= favourite.description %></td>
-          <td><form method="POST" action="/favourites/<%= favourite.id %>/delete"><button type="submit" class="btn btn-secondary" >Remove</button></form></td>
+          <td><form method="POST" action="users/favourites/<%= favourite.id %>/delete"><button type="submit" class="btn btn-secondary" >Remove</button></form></td>
         </tr>
         <% } %>
     </tbody>
