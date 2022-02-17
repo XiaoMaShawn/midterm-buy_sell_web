@@ -83,7 +83,7 @@
             <td><%= item.active%></td>
             <td><%= item.owner_id%></td>
             <td>
-              <form method="POST" action="users/<%= item.id %>/favourites/">
+              <form method="POST" action="/users/<%= username %>/favourites/">
                 <i id="heart" class="fas fa-heart"></i>
               </form>
               <form method="POST" action="/users/items/<%= item.id %>/delete">

@@ -49,20 +49,20 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const favouritesRoutes = require("./routes/favourites");
 const itemsRoutes = require("./routes/items");
-const searchRoutes = require("./routes/search");
+// const searchRoutes = require("./routes/search");
 
-const postItemsRoutes = require("./routes/postItems");
+// const postItemsRoutes = require("./routes/postItems");
 const messagesRoutes = require("./routes/messages");
 
 const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/favourites", favouritesRoutes(db));
-app.use("/users", usersRoutes(db));
-app.use("/search", searchRoutes(db));
-app.use("/users/items", postItemsRoutes(db));
+app.use("/users/favourites", favouritesRoutes(db));
 app.use("/users", itemsRoutes(db));
+app.use("/", usersRoutes(db));
+// app.use("/search", searchRoutes(db));
+// app.use("/users/items", postItemsRoutes(db));
 app.use("/messages", messagesRoutes(db));
 
 // app.use("/api/widgets", widgetsRoutes(db));
