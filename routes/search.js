@@ -18,22 +18,19 @@ module.exports = (db) => {
 
   router.post("/results", (req, res) => {
     const queryParams = [];
-    // 2
+
     let queryString = `
     SELECT items.*, users.name
     FROM items
     JOIN users ON users.id = items.owner_id
   `;
-    // console.log(queryParams, `queryParams`, queryParams.length);
 
-    // 3
     if (req.body.owner) {
       queryParams.push(`%${req.body.owner}%`);
       queryString += `
       WHERE users.name LIKE $${queryParams.length} `;
-      // console.log(test);
     }
-    // console.log(queryParams, `queryParams`, queryParams.length);
+
     if (req.body.description) {
       queryParams.push(`%${req.body.description}%`);
       if (queryParams.length > 1) {
@@ -72,18 +69,11 @@ module.exports = (db) => {
     db.query(queryString, queryParams)
       .then((data) => {
         const items = data.rows;
-        console.log(
-          "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++",
-          data.rows
-        );
         const templateVars = {};
         templateVars.items = items;
         templateVars.id = req.session.id;
-
         templateVars.username = req.session.username;
-        // console.log(templateVars.items);
         res.render("items", templateVars);
-        // res.json({ items });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });

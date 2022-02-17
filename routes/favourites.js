@@ -18,8 +18,6 @@ module.exports = (db) => {
     )
       .then((data) => {
         const favourites = data.rows;
-        // console.log(data.rows);
-        // console.log(req.session);
         const templateVars = {};
         if (req.session.id === 1) {
           templateVars.user_id = 1
@@ -61,7 +59,6 @@ module.exports = (db) => {
   });
 
   router.post("/favourites/:favourite_id/delete", (req, res) => {
-    // console.log(req.params.favourite_id);
     db.query(`
     DELETE FROM favourites
     WHERE id = '${req.params.favourite_id}';
@@ -69,14 +66,17 @@ module.exports = (db) => {
     res.redirect("/users/favourites");
   });
 
-  // router.post('/:id/favourites', (req, res) => {
-  //   db.query(`
-  //   INSERT INTO favourites (user_id, item_id)
-  //   VALUES (${req.params.id},${req.params.item_id} )
-  //   `).then(data => {
-  //     res.redirect('/users/favourites');
-  //   })
-  // })
+  router.post("/:id/favourites/", (req, res) => {
+    db.query(`
+    INSERT INTO favourites (user_id, item_id)
+    VALUES (${req.params.id}, ${req.body.item_id})
+    `).then(data => {
+      res.redirect("back");
+    }).catch(err => {
+      console.log('error', err);
+    })
+
+  });
 
   return router;
 };

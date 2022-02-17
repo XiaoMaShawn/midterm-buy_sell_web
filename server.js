@@ -71,9 +71,9 @@ app.use("/messages", messagesRoutes(db));
 
 app.get("/", (req, res) => {
   const templateVars = {};
+  templateVars.id = req.session.id;
   templateVars.username = req.session.username;
-  // console.log(templateVars);
-  res.render("index", templateVars);
+  res.redirect('/users/items');
 });
 
 app.post("/login", (req, res) => {
@@ -85,7 +85,6 @@ app.post("/login", (req, res) => {
     req.session.username = req.body.username;
   }
   console.log(req.session);
-
   res.redirect(`/users/${req.session.id}/items`);
 });
 
