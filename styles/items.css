@@ -1,10 +1,18 @@
 #heart:hover {
   color: red;
 }
+
+#heart:visited {
+  color: red;
+}
 .fabutton {
   background: none;
   padding: 0px;
   border: none;
+}
+
+td {
+  text-align: center;
 }
 
 td:hover {

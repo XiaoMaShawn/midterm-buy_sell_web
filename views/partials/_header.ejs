@@ -29,7 +29,7 @@
     <% if (username) { %>
     <form action="/logout" method="POST">
       <label>Welcome! <%= username %> </label>
-      <button class="btn btn-light">Log out</button>
+      <button class="btn btn-outline-light">Log out</button>
     </form>
     <% } else {%>
     <form action="/login" method="POST">
@@ -37,7 +37,7 @@
       <input type="text" name="username" />
       <label>Password</label>
       <input type="password" name="password" />
-      <button class="btn btn-light">Submit</button>
+      <button class="btn btn-outline-light">Submit</button>
     </form>
     <% } %>
   </nav>

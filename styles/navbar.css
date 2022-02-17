@@ -1,1 +1,8 @@
-/* No CSS *//*# sourceMappingURL=navbar.css.map */
+nav label {
+  color: white;
+}
+
+nav button {
+  margin-left: 1em;
+}
+/*# sourceMappingURL=navbar.css.map */

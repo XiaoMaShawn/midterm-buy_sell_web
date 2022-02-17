@@ -64,11 +64,12 @@ module.exports = (db) => {
   });
 
   router.post("/:id/favourites/", (req, res) => {
+    // console.log("EDWIN", req.body.item_id);
     db.query(`
-    DELETE FROM favourites
-    WHERE id = '${req.params.id}';
+    INSERT INTO favourites (user_id, item_id)
+    VALUES (${req.params.id}, ${req.body.item_id})
     `);
-    res.redirect("/:id/favourites");
+    res.redirect("back");
   });
   return router;
 };

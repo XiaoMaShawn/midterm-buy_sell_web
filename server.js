@@ -73,6 +73,8 @@ app.use("/messages", messagesRoutes(db));
 app.get("/", (req, res) => {
   const templateVars = {};
   templateVars.username = req.session.username;
+  templateVars.id = req.session.id;
+
   // console.log(templateVars);
   res.render("index", templateVars);
 });

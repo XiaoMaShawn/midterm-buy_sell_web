@@ -60,7 +60,7 @@ module.exports = (db) => {
         templateVars.id = req.session.id;
 
         templateVars.username = req.session.username;
-        res.render("items", templateVars);
+        res.render("myItems", templateVars);
         // res.json({ items });
       })
       .catch((err) => {
@@ -77,7 +77,7 @@ module.exports = (db) => {
     res.redirect("back");
   });
 
-  //Mark as sold
+  //Mark as sold, only admin has priviledge
   router.post("/items/:item_id/sold", (req, res) => {
     // console.log(`THIS IS CONSOLE`, req);
     db.query(`
