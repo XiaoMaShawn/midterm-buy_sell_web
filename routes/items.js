@@ -10,14 +10,14 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/items", (req, res) => {
-    ///RETURNs UNDEFINED
-    // BODY IS ONLY FOR POST console.log(`THIS BE THE`, req.body);
     console.log(`THIS BE THE`, req.params);
 
     db.query(
-      `SELECT items.*, users.name AS username
+      `
+      SELECT items.*, users.name AS username
       FROM items
-    JOIN users ON users.id = items.owner_id ;`
+    JOIN users ON users.id = items.owner_id ;
+    `
     )
       .then((data) => {
         const items = data.rows;
@@ -40,8 +40,6 @@ module.exports = (db) => {
   });
 
   router.get("/:user_id/items", (req, res) => {
-    ///RETURNs UNDEFINED
-    // BODY IS ONLY FOR POST console.log(`THIS BE THE`, req.body);
     console.log(`THIS BE THE`, req.params);
 
     db.query(
