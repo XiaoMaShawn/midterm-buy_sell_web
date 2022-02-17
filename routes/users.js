@@ -53,13 +53,13 @@ module.exports = (db) => {
     }
   });
 
-  router.get("/users/:name", (req, res) => {
+  router.get("/users/:user_id", (req, res) => {
     db.query(
       `
     SELECT users.*, COUNT(items.*) as total_items
     FROM users
     LEFT JOIN items on users.id = items.owner_id
-    WHERE users.name = '${req.params.name}'
+    WHERE users.id = '${req.params.user_id}'
     GROUP BY users.id;
     `
     )
