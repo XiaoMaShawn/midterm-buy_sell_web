@@ -15,10 +15,13 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/users">Users</a>
-        <a class="nav-item nav-link" href="/users/items">Items</a>
+        <a class="nav-item nav-link" href="/users/items">All Items</a>
+        <a class="nav-item nav-link" href="/users/<%= id %>/items">My Items</a>
         <a class="nav-item nav-link" href="/search">Search Items</a>
         <a class="nav-item nav-link" href="/messages">Messages</a>
-        <a class="nav-item nav-link" href="/users/favourites">Favourites</a>
+        <a class="nav-item nav-link" href="/users/<%= id %>/favourites"
+          >Favourites</a
+        >
         <a class="nav-item nav-link" href="/users/items/new">Post Item</a>
       </div>
     </div>
@@ -26,7 +29,7 @@
     <% if (username) { %>
     <form action="/logout" method="POST">
       <label>Welcome! <%= username %> </label>
-      <button>Log out</button>
+      <button class="btn btn-light">Log out</button>
     </form>
     <% } else {%>
     <form action="/login" method="POST">
@@ -34,7 +37,7 @@
       <input type="text" name="username" />
       <label>Password</label>
       <input type="password" name="password" />
-      <button>Submit</button>
+      <button class="btn btn-light">Submit</button>
     </form>
     <% } %>
   </nav>

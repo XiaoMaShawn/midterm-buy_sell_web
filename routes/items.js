@@ -10,7 +10,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/items", (req, res) => {
-    console.log(`NATHAN NATHAN`, req.params);
+    // console.log(`NATHAN NATHAN`, req.params);
 
     db.query(
       `
@@ -74,7 +74,18 @@ module.exports = (db) => {
     DELETE FROM items
     WHERE id = '${req.params.item_id}';
     `);
-    res.redirect("/users/items");
+    res.redirect("back");
+  });
+
+  //Mark as sold
+  router.post("/items/:item_id/sold", (req, res) => {
+    // console.log(`THIS IS CONSOLE`, req);
+    db.query(`
+    UPDATE items
+    SET sold_date = NOW()
+    WHERE id = '${req.params.item_id}';
+    `);
+    res.redirect("back");
   });
 
   router.get("/api", (req, res) => {
@@ -124,7 +135,7 @@ module.exports = (db) => {
         templateVars.id = req.session.id;
 
         templateVars.username = req.session.username;
-        res.render("postItemsResults", templateVars);
+        res.render("items", templateVars);
         // res.json({ items });
       })
       .catch((err) => {

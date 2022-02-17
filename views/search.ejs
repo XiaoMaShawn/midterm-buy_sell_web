@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/forms.css" type="text/css" />
 
     <!--Font Awesome-->
     <script
@@ -43,53 +44,52 @@
 
   <body>
     <header><%- include('partials/_header') %></header>
-    <form method="POST" action="/search/results">
-      <div class="form-group mb-2">
-        <label for="name">owner</label>
-        <input
-          id="owner"
-          name="owner"
-          type="owner"
-          class="form-control"
-          placeholder="owner:"
-          style="width: 300px; margin: 1em"
-        />
-      </div>
-      <div class="form-group mb-2">
-        <label for="description">Description</label>
-        <input
-          id="description"
-          name="description"
-          type="description"
-          class="form-control"
-          placeholder="description"
-          style="width: 300px; margin: 1em"
-        />
-        <div class="form-group mb-2">
-          <label for="price">Min Price</label>
+    <main class="form-container">
+      <form method="POST" action="/search/results">
+        <div class="form-group">
+          <label for="name">Owner</label>
+          <input
+            id="owner"
+            name="owner"
+            type="owner"
+            class="form-control"
+            placeholder="Owner"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            id="description"
+            name="description"
+            type="description"
+            class="form-control"
+            placeholder="Description"
+          />
+        </div>
+        <div class="form-group">
+          <label for="price">Minimum Price</label>
           <input
             id="minPrice"
             name="minPrice"
             type="minPrice"
             class="form-control"
-            placeholder="minPrice"
-            style="width: 300px; margin: 1em"
+            placeholder="Minimum price"
           />
         </div>
-        <div class="form-group mb-2">
-          <label for="price">max Price</label>
+        <div class="form-group">
+          <label for="price">Maximum Price</label>
           <input
             id="maxPrice"
             name="maxPrice"
             type="maxPrice"
             class="form-control"
-            placeholder="maxPrice"
-            style="width: 300px; margin: 1em"
+            placeholder="Maximum price"
           />
         </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </main>
+
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

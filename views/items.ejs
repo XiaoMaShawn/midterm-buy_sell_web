@@ -65,6 +65,9 @@
             <th scope="col">item.owner_id</th>
             <!-- <th scope="col">favourite</th> -->
             <th scope="col">delete</th>
+            <% if(id === 1) { %>
+            <th scope="col">Mark As Sold</th>
+            <% } %>
           </tr>
         </thead>
 
@@ -83,12 +86,23 @@
             <td><%= item.active%></td>
             <td><%= item.owner_id%></td>
             <td>
-              <form method="POST" action="/users/<%= username %>/favourites/">
-                <i id="heart" class="fas fa-heart"></i>
+              <form
+                method="POST"
+                type="submit"
+                action="/users/<%= id %>/favourites/"
+              >
+                <button type="submit" id="completed-task" class="fabutton">
+                  <i id="heart" type="submit" class="fas fa-heart"></i>
+                </button>
               </form>
               <form method="POST" action="/users/items/<%= item.id %>/delete">
                 <button>Delete</button>
               </form>
+              <% if(id === 1) { %>
+              <form method="POST" action="/users/items/<%= item.id %>/sold">
+                <button>Mark as sold</button>
+              </form>
+              <% } %>
             </td>
           </tr>
           <% } %>

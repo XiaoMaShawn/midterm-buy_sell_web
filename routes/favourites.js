@@ -19,7 +19,7 @@ module.exports = (db) => {
         const favourites = data.rows;
         const templateVars = {};
 
-        templateVars.id = req.session.id
+        templateVars.id = req.session.id;
         templateVars.username = req.session.username;
         templateVars.favourites = favourites;
         res.render("favourites", templateVars);
@@ -30,8 +30,8 @@ module.exports = (db) => {
   });
 
   router.get("/:id/favourites", (req, res) => {
-   console.log()
-    const userID = req.params.id
+    console.log();
+    const userID = req.params.id;
 
     db.query(
       `SELECT favourites.id AS ID, items.name AS Name, items.description AS description, items.photo_url AS image FROM favourites
@@ -42,9 +42,9 @@ module.exports = (db) => {
     )
       .then((data) => {
         const favourites = data.rows;
-        const templateVars = {favourites};
+        const templateVars = { favourites };
 
-        templateVars.id = req.session.id
+        templateVars.id = req.session.id;
         templateVars.username = req.session.username;
         templateVars.favourites = favourites;
         console.log("/id templateVars", templateVars);
@@ -63,5 +63,12 @@ module.exports = (db) => {
     res.redirect("/:id/favourites");
   });
 
+  router.post("/:id/favourites/", (req, res) => {
+    db.query(`
+    DELETE FROM favourites
+    WHERE id = '${req.params.id}';
+    `);
+    res.redirect("/:id/favourites");
+  });
   return router;
 };
