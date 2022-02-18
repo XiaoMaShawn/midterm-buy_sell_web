@@ -3,40 +3,40 @@
 
 $(() => {
   console.log("client.js OO")
-  //form submission
-  //SYNTAX REMINDER # is id, . is class
-  const renderMessages = function(messages) {
-    //loops through message
-    for (const message of messages) {
-      //calls createMessageElement for each tweet
-      $(".messageContainer").prepend(createMessageElement(message));
-      //takes return value and prepends it to each message container div
-    }
-  };
+  // //form submission
+  // //SYNTAX REMINDER # is id, . is class
+  // const renderMessages = function(messages) {
+  //   //loops through message
+  //   for (const message of messages) {
+  //     //calls createMessageElement for each tweet
+  //     $(".messageContainer").prepend(createMessageElement(message));
+  //     //takes return value and prepends it to each message container div
+  //   }
+  // };
 
 
-  const createMessageElement = function(message) {
-    const clean = function(string) {
-      //creating function to nullify script in textarea
-      let div = document.createElement("div");
-      div.appendChild(document.createTextNode(string));
-      return div.innerHTML;
-    };
-    const $message = `
-    <article class="message">
-          <header class="messageHeader">
-            <address>${message.user}</address>
-          </header>
-          <div class="textInMessage">
-            <h5>
-            ${clean(message.content)}
-            </h5>
-          </div>
-        </article>
-    `;
+  // const createMessageElement = function(message) {
+  //   const clean = function(string) {
+  //     //creating function to nullify script in textarea
+  //     let div = document.createElement("div");
+  //     div.appendChild(document.createTextNode(string));
+  //     return div.innerHTML;
+  //   };
+  //   const $message = `
+  //   <article class="message">
+  //         <header class="messageHeader">
+  //           <address>${message.user}</address>
+  //         </header>
+  //         <div class="textInMessage">
+  //           <h5>
+  //           ${clean(message.content)}
+  //           </h5>
+  //         </div>
+  //       </article>
+  //   `;
 
-    return $message;
-  };
+  //   return $message;
+  // };
 
 
   $("#messageForm").submit(function(event) {
@@ -60,21 +60,21 @@ $(() => {
     });
   });
 
-  const loadMessages = function() {
-    console.log("loadmessage");
-    $.ajax({
-      url: "/messages/2/chat",
-      success: function(response) {
-        console.log(response)
-        // renderMessages(response)
-      }
-    })
-    // $.get("/2/chat").then((response) => {
-    //   //sending to renderMessages
-    //   renderMessages(response);
-    // });
-  };
-  loadMessages();
-  //calling loadMessages
+  // const loadMessages = function() {
+  //   console.log("loadmessage");
+  //   $.ajax({
+  //     url: "/messages/2/chat",
+  //     success: function(response) {
+  //       console.log(response)
+  //       // renderMessages(response)
+  //     }
+  //   })
+  //   // $.get("/2/chat").then((response) => {
+  //   //   //sending to renderMessages
+  //   //   renderMessages(response);
+  //   // });
+  // };
+  // loadMessages();
+  // //calling loadMessages
 
 });

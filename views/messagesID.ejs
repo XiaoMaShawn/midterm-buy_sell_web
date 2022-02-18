@@ -41,32 +41,46 @@
         <p>Hope you will enjoy shopping here</p>
       </div>
     </div>
-    <main class="item_container" style="margin: 1em">
-      <h3>Messages</h3>
-      <table class="user_table">
-        <thead>
-          <tr>
-            <th scope="col">Owner</th>
-            <th scope="col">Item</th>
-
-            <th scope="col">Title</th>
-            <th scope="col">Content</th>
-            <th scope="col">Time</th>
-            <th scope="col">Chat</th>
-          </tr>
-        </thead>
+  </div>
+  <main class="item_container" style="margin: 1em">
+    <h3>Messages</h3>
+    <table class="user_table">
+      <thead>
+        <tr>
+          <th scope="col">Owner</th>
+          <th scope="col">Item</th>
+          <th scope="col">Sender</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Time</th>
+          <th scope="col">Chat</th>
+        </tr>
+      </thead>
 
         <tbody>
           <% for(let message of messages) { %>
           <tr>
-            <td><%= message.owner %></td>
-            <td><%= message.item_name %></td>
-            <td><%= message.title %></td>
-            <td><%= message.content %></td>
-            <td><%= message.sent_at %></td>
+            <td>
+              <%= message.owner %>
+            </td>
+            <td>
+              <%= message.item_name %>
+            </td>
+            <td>
+              <%= message.sender %>
+            </td>
+            <td>
+              <%= message.title %>
+            </td>
+            <td>
+              <%= message.content %>
+            </td>
+            <td>
+              <%= message.sent_at %>
+            </td>
             <td>
               <button>
-                <a href="/messages/<%= message.message_id %>/chat">chat</a>
+                <a href="/messages/<%= message.item %>/chat">chat</a>
               </button>
             </td>
           </tr>
