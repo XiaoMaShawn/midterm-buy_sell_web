@@ -32,12 +32,12 @@
 
 td {
   text-align: center;
-  &:hover {
-    border: solid;
-    border-width: 1px;
-    border-color: hsl(226, 43%, 44%);
-    background-color: #f4ecf2;
-    opacity: 0.5;
+  // &:hover {
+  //   border: solid;
+  //   border-width: 1px;
+  //   border-color: hsl(226, 43%, 44%);
+  //   background-color: #f4ecf2;
+  //   opacity: 0.5;
     // box-shadow: 5px 10px #888888;
   }
 }

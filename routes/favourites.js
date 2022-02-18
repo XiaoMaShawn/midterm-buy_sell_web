@@ -24,6 +24,8 @@ module.exports = (db) => {
         } else {
           templateVars.user_id = data.rows[0].user_id;
         }
+        templateVars.id = req.session.id;
+
         templateVars.username = req.session.username;
         templateVars.favourites = favourites;
         res.render("favourites", templateVars);
