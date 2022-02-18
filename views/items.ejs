@@ -46,7 +46,6 @@
             <th scope="col">Photo URL</th>
             <th scope="col">Price</th>
             <th scope="col">Sold Date</th>
-            <th scope="col">Active Status</th>
             <th scope="col">Favourites</th>
             <% if(id === 1) { %>
             <th scope="col">Delete</th>
@@ -78,9 +77,6 @@
               <%= item.sold_date %>
             </td>
             <td>
-              <%= item.active %>
-            </td>
-            <td>
               <form
                 method="POST"
                 type="submit"
@@ -95,7 +91,7 @@
                 <button
                   type="submit"
                   id="completed-task"
-                  class="fabutton btn btn-light"
+                  class="heart-button fabutton btn btn-light"
                 >
                   <i type="submit" class="heart fas fa-heart fa-2x"></i>
                 </button>

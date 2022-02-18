@@ -3,12 +3,18 @@
 // }
 
 .heart {
+  color: #ffcccb
+
+}
+
+.heart {
+
   &:hover {
     color: red;
   }
   &:visited {
     color: red;
-  }
+
 }
 /*# sourceMappingURL=items.css.map */
 
@@ -17,6 +23,13 @@
   padding: 0px;
   border: none;
 }
+
+.heart-button {
+  background: none;
+  padding: 0px;
+  border: none;
+}
+
 td {
   text-align: center;
   &:hover {
