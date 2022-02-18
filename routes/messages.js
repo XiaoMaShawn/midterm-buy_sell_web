@@ -13,11 +13,18 @@ module.exports = (db) => {
 
     db.query(
       `
-    SELECT *
+    SELECT
+    users.name as owner,
+     items.id AS id,
+     items.name AS Item,
+     users.name AS Name,
+     messages.title AS Title,
+     sender.name AS sender,
+     messages.content AS Content
     FROM messages
-    JOIN users ON users.id = messages.from_id
     JOIN items ON items.id = messages.item_id
-
+    JOIN users ON users.id = items.owner_id
+    JOIN users sender ON sender.id = messages.from_id
     `
     )
       .then((data) => {
@@ -42,14 +49,17 @@ module.exports = (db) => {
     messages.id AS message_id,
     messages.title AS title,
     messages.from_id AS from_id,
+    users.name as owner,
     messages.content AS content,
     messages.sent_at AS sent_at,
     items.name AS item_name,
-    users.name AS owner,
+    users.name AS from,
+    sender.name AS sender,
     messages.item_id as item
     FROM messages
     JOIN items ON items.id = messages.item_id
-    JOIN users ON owner_id = users.id
+    JOIN users ON users.id = items.owner_id
+    JOIN users sender ON sender.id = messages.from_id
     WHERE items.id = ${req.params.id}
     `
     ).then((data) => {
@@ -77,10 +87,12 @@ module.exports = (db) => {
     messages.sent_at AS sent_at,
     items.name AS item_name,
     users.name AS owner,
-    messages.item_id as item
+    messages.item_id as item,
+    sender.name AS sender
     FROM messages
     JOIN items ON items.id = messages.item_id
-    JOIN users ON owner_id = users.id
+    JOIN users ON users.id = items.owner_id
+    JOIN users sender ON sender.id = messages.from_id
     WHERE messages.item_id = ${req.params.id}
     `
     ).then((data) => {

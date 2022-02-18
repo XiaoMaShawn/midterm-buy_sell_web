@@ -39,7 +39,7 @@
       <thead>
         <tr>
           <th scope="col">Item</th>
-          <th scope="col">From</th>
+          <th scope="col">Sender</th>
           <th scope="col">Title</th>
           <th scope="col">Content</th>
           <!-- <th scope="col">Reseriver</th> -->
@@ -52,11 +52,11 @@
           <tr>
             <td>
               <a href="/messages/<%= message.id %>">
-                <%= message.name %>
+                <%= message.item %>
               </a>
             </td>
             <td>
-              <%= message.from_id %>
+              <%= message.sender %>
             </td>
             <td>
                 <%= message.title %>
