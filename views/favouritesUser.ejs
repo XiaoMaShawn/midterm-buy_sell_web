@@ -2,29 +2,42 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
   <!-- link CSS file -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
-
+  <!--Font Awesome-->
+  <script src="https://kit.fontawesome.com/782079e8aa.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- link JS file and jQuery -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
+  <title>Favourites Page</title>
+</head>
 
 
-  <title>Favourites ID Page</title>
+
+<!-- link JS file and jQuery -->
+<script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="/scripts/app.js"></script>
+
+
+
+<title>Favourites Page</title>
 </head>
 
 <body>
@@ -34,20 +47,17 @@
   <div class="banner">
     <div class="banner-text">
       <h1>Favourites</h1>
-      <p>Check out all your favourites!</p>
+      <p>See all your favourites!</p>
     </div>
   </div>
   <main class='item_container' style="margin: 1em;">
-
-    <h3>Favourites</h3>
-    <table class="favourites_table">
+    <table class="table">
       <thead>
         <tr>
-          <th scope="col"></th>
+          <th scope="col">User</th>
+          <th scope="col">Favourite</th>
           <th scope="col">Game</th>
-          <th scope="col">Description</th>
           <th scope="col">Remove from Favourites</th>
-
 
         </tr>
       </thead>
@@ -55,27 +65,28 @@
       <tbody>
         <% for(let favourite of favourites) { %>
           <tr>
-            <td class ="tableImage"><img src="<%= favourite.image %>" alt="photo_url" /></td>
-            <td><%= favourite.name %></td>
-            <td ><%= favourite.description %></td>
-            <% if (favourite.total_items==='0' ) { %>
-              <td>
-                Sorry, you haven't favourited any products!
-              </td>
-              <% } else { %>
-                <td>
-                </td>
-                <% } %>
-                  <td>
-                    <form method="POST" action="/<%=favourites.user_id%>/favourites/delete"><button>Delete</button></form>
-                  </td>
+            <td>
+              <%= favourite.user %>
+            </td>
+            <td class="tableImage">
+              <img src="<%= favourite.image %>" alt="photo_url" />
+            </td>
+            <td>
+              <%= favourite.name %>
+            </td>
+
+
+            <td>
+              <form method="POST" action="/users/favourites/<%= favourite.id %>/delete"><button type="submit"
+                  class="btn btn-secondary">Remove</button></form>
+            </td>
+
+
+
           </tr>
           <% } %>
       </tbody>
-
-
     </table>
-
   </main>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

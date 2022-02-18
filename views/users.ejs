@@ -1,91 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- link CSS file -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
+    <!-- link JS file and jQuery -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <!-- link CSS file -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <title>Buy Sell Home Page</title>
+  </head>
 
-
-
-  <!-- link JS file and jQuery -->
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-
-
-
-  <title>Buy Sell Home Page</title>
-</head>
-
-<body>
-  <header>
-    <%- include('partials/_header') %>
-  </header>
-  <div class="banner">
-    <div class="banner-text">
-      <h1>welcome to our website</h1>
-      <p>Here Is all our USERS</p>
+  <body>
+    <header><%- include('partials/_header') %></header>
+    <div class="banner">
+      <div class="banner-text">
+        <h1>welcome to our website</h1>
+        <p>Here Is all our USERS</p>
+      </div>
     </div>
-  </div>
-  <main class='item_container' style="margin: 1em;">
+    <main class="item_container" style="margin: 1em">
+      <h3>Website USERS</h3>
+      <table class="user_table">
+        <thead>
+          <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">User Email</th>
+            <th scope="col">User Phone</th>
+          </tr>
+        </thead>
 
-    <h3>Website USERS</h3>
-    <table class="user_table">
-      <thead>
-        <tr>
-          <th scope="col">User Name</th>
-          <th scope="col">User Email</th>
-          <th scope="col">User Phone</th>
-
-
-        </tr>
-      </thead>
-
-      <tbody>
-        <% for(let user of users) { %>
+        <tbody>
+          <% for(let user of users) { %>
           <tr>
             <td>
-              <a href="/users/<%= user.name %>">
-                <%= user.name %>
-              </a>
+              <a href="/users/<%= user.id %>"> <%= user.name %> </a>
             </td>
+            <td><%= user.email %></td>
+            <td><%= user.phone_number%></td>
             <td>
-              <%= user.email %>
-            </td>
-            <td>
-              <%= user.phone_number%>
-            </td>
-            <td>
-              <form method="POST" action="/users/<%= user.id %>/delete"><button>Delete</button></form>
+              <form method="POST" action="/users/<%= user.id %>/delete">
+                <button>Delete</button>
+              </form>
             </td>
           </tr>
           <% } %>
-      </tbody>
-
-
-    </table>
-
-  </main>
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
+        </tbody>
+      </table>
+    </main>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

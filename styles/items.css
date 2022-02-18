@@ -1,8 +1,8 @@
-#heart:hover {
+.heart:hover {
   color: red;
 }
 
-#heart:visited {
+.heart:visited {
   color: red;
 }
 .fabutton {

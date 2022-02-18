@@ -28,7 +28,7 @@
 
     <% if (username) { %>
     <form action="/logout" method="POST">
-      <label>Welcome! <%= username %> </label>
+      <label class="welcome">Welcome! <%= username %> </label>
       <button class="btn btn-outline-light">Log out</button>
     </form>
     <% } else {%>

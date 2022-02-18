@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
-
   <!--Font Awesome-->
   <script src="https://kit.fontawesome.com/782079e8aa.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -48,10 +47,6 @@
             <th scope="col">Sold Date</th>
             <th scope="col">Active Status</th>
             <th scope="col">Favourites</th>
-            <% if(id === 1) { %>
-            <th scope="col">Delete</th>
-            <th scope="col">Mark As Sold</th>
-            <% } %>
           </tr>
         </thead>
 
@@ -61,7 +56,6 @@
             <td>
               <%= item.username %>
             </td>
-            <!-- <td><%= item.id %></td> -->
             <td>
               <%= item.name %>
             </td>
@@ -100,18 +94,6 @@
                   <i type="submit" class="heart fas fa-heart fa-2x"></i>
                 </button>
               </form>
-              <% if(id === 1) { %>
-                <td>
-                <form method="POST" action="/users/items/<%= item.id %>/delete">
-                  <button class="btn btn-light">Delete</button>
-                </form>
-              </td>
-              <td>
-              <form method="POST" action="/users/items/<%= item.id %>/sold">
-                <button class="btn btn-light">Mark sold</button>
-              </form>
-            </td>
-              <% } %>
             </td>
           </tr>
           <% } %>
