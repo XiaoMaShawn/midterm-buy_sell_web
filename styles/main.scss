@@ -3,7 +3,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
 }
 
 .nav {
@@ -17,8 +16,8 @@ body {
 
 .banner {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://hbr.org/resources/images/article_assets/2021/03/Mar21_10_1253170814.jpg");
-
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://hbr.org/resources/images/article_assets/2021/03/Mar21_10_1253170814.jpg");
 
   /* Set a specific height */
   height: 15%;
@@ -48,18 +47,19 @@ body {
   align-items: center;
   // flex-wrap: wrap;
   background-color: bisque;
- div{
+  div {
     margin: 5px;
     height: 300px;
     width: 300px;
     background-color: aqua;
     text-align: center;
- }
+  }
 }
 
 .user_table {
-  width:100%;
-  th,td {
+  width: 100%;
+  th,
+  td {
     padding: 5px;
   }
 }
@@ -71,7 +71,7 @@ body {
 }
 
 .submit-form {
-  textarea{
+  textarea {
     width: 80%;
   }
 }

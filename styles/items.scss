@@ -2,17 +2,42 @@
 //   color: red;
 // }
 
-#heart:hover {
-  color: red;
+.heart {
+  color: #ffcccb
+
+}
+
+.heart {
+
+  &:hover {
+    color: red;
+  }
+  &:visited {
+    color: red;
+
 }
 /*# sourceMappingURL=items.css.map */
 
-td:hover {
-  border: solid;
-  border-width: 1px;
-  border-color: hsl(226, 43%, 44%);
-  background-color: #f4ecf2;
-  opacity: 0.5;
+.fabutton {
+  background: none;
+  padding: 0px;
+  border: none;
+}
 
-  // box-shadow: 5px 10px #888888;
+.heart-button {
+  background: none;
+  padding: 0px;
+  border: none;
+}
+
+td {
+  text-align: center;
+  &:hover {
+    border: solid;
+    border-width: 1px;
+    border-color: hsl(226, 43%, 44%);
+    background-color: #f4ecf2;
+    opacity: 0.5;
+    // box-shadow: 5px 10px #888888;
+  }
 }

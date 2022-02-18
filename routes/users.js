@@ -53,13 +53,13 @@ module.exports = (db) => {
     }
   });
 
-  router.get("/users/:user_id", (req, res) => {
+  router.get("/users/:id", (req, res) => {
     db.query(
       `
     SELECT users.*, COUNT(items.*) as total_items
     FROM users
     LEFT JOIN items on users.id = items.owner_id
-    WHERE users.id = '${req.params.user_id}'
+    WHERE users.id = '${req.params.id}'
     GROUP BY users.id;
     `
     )
@@ -69,8 +69,6 @@ module.exports = (db) => {
         templateVars.users = users;
         templateVars.username = req.session.username;
         templateVars.id = req.session.id;
-
-        // console.log(templateVars);
         res.render("usersID", templateVars);
       })
       .catch((err) => {
@@ -78,7 +76,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/:id/delete", (req, res) => {
+  router.post("/users/:id/delete", (req, res) => {
     console.log(req.params.id);
     db.query(`
     DELETE FROM users
@@ -87,7 +85,7 @@ module.exports = (db) => {
     res.redirect("/users");
   });
 
-  router.get("/api", (req, res) => {
+  router.get("/users/api", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;

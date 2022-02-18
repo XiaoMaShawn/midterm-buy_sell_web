@@ -102,7 +102,6 @@ module.exports = (db) => {
       templateVars.id = req.session.id;
 
       res.render("chat", templateVars);
-      // res.json({messages:templateVar.messages})
     });
   });
 
@@ -118,18 +117,10 @@ console.log("req.body", req.body)
     ).then((data) => {
       const templateVars = {};
       templateVars.messages = data.rows;
-      // console.log(templateVars);
       res.redirect("/messages");
-
     });
   });
-
-  //router.get
   return router;
 };
 
-// SELECT messages.id AS message_id, messages.title AS title, messages.content AS content, messages.sent_at AS sent_at, items.name AS item_name, users.name AS owner
-//     FROM messages
-//     JOIN items ON items.id = messages.item_id
-//     JOIN users ON owner_id = users.id
-//     WHERE messages.id = ${req.params.id}
+

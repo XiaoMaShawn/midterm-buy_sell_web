@@ -1,4 +1,14 @@
 $primaryColour: #4056a1;
+nav {
+  label {
+    .welcome {
+      color: white;
+    }
+  }
+  button {
+    margin-left: 1em;
+  }
+}
 
 // nav {
 //   &:hover {

@@ -50,7 +50,6 @@ const usersRoutes = require("./routes/users");
 const favouritesRoutes = require("./routes/favourites");
 const itemsRoutes = require("./routes/items");
 const searchRoutes = require("./routes/search");
-
 const messagesRoutes = require("./routes/messages");
 
 const widgetsRoutes = require("./routes/widgets");
@@ -71,10 +70,10 @@ app.use("/messages", messagesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  const templateVars = {};
-  templateVars.username = req.session.username;
-  // console.log(templateVars);
-  res.render("index", templateVars);
+  // const templateVars = {};
+  // templateVars.id = req.session.id;
+  // templateVars.username = req.session.username;
+  res.redirect("/users/items");
 });
 
 app.post("/login", (req, res) => {
@@ -82,21 +81,10 @@ app.post("/login", (req, res) => {
     req.session.id = 1;
     req.session.username = req.body.username;
   } else {
-    // db.query(`
-    //   SELECT id FROM users
-    //   WHERE name = '${req.body.username}'
-    //  `)
-    //   .then(data => {
-    //     // console.log(data.rows);
-    //     const id = data.rows[0].id
-    //     return id
-    //   }
-    //   )
     req.session.id = 2;
     req.session.username = req.body.username;
   }
   console.log(req.session);
-
   res.redirect(`/users/${req.session.id}/items`);
 });
 
